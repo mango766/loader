@@ -4,20 +4,6 @@
 # @File : loaders.py
 # @Software : PyCharm
 
-
-# Copyright 2023 The HuggingFace Team. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 import os
 import re
 from collections import defaultdict
@@ -404,7 +390,7 @@ class UNet2DConditionLoadersMixin:
                 value = state_dict.pop(key)
                 attn_processor_key, sub_key = ".".join(key.split(".")[:-3]), ".".join(key.split(".")[-3:])
                 # part_lora_list = ["down_blocks.2","down_blocks.1","up_blocks.0","up_blocks.1"]
-                part_lora_list = ["up_blocks.0"]
+                part_lora_list = ["00"]
                 if any(part in key for part in part_lora_list):
                     lora_grouped_dict[attn_processor_key][sub_key] = value
                 # lora_grouped_dict[attn_processor_key][sub_key] = value
